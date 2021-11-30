@@ -5,9 +5,30 @@
 
 const caesarModule = (function () {
   // you can add any code you want within this function scope
+  const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
+  'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
   function caesar(input, shift, encode = true) {
-    // your solution code here
+    if(shift === 0 || shift > 25 || shift < -25 || !shift) return false;
+    let shiftDirection = shift;
+    if(!encode) shiftDirection -= (shift*2);
+    const message = input.toLowerCase();
+    let characters = message.split('');
+    for(let i=0; i<characters.length; i++){
+      const letter = alphabet.find(letter => letter === characters[i]);
+      if(letter) { 
+        const index = alphabet.indexOf(letter);
+        let shifted = index + shiftDirection;
+        if(shifted > 25) {
+          shifted-=26;
+        } else if( shifted < 0) {
+          shifted+=26;
+        }
+        characters[i] = alphabet[shifted]; 
+      }  
+    }
+    const result = characters.join('');
+    return result;
   }
 
   return {

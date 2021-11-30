@@ -30,17 +30,13 @@ describe("substitution", () => {
         expect(actual).to.equal(expected);
     });
 
-    it("should ignore capital letters (results of 'A Message' should equal results of 'a message')", () => {
-        const input1 = "test input";
-        const input2 = "Test Input";
+    it("should ignore capital letters", () => {
+        const input = "Test Input";
         const alphabet = "zyxwvutsrqponmlkjihgfedcba";
-        const actual1 = substitution(input1, alphabet);
-        const actual2 = substitution(input2, alphabet);
+        const actual = substitution(input, alphabet);
         const expected = "gvhg rmkfg";
-        expect(actual1).to.be.a('string');
-        expect(actual2).to.be.a('string');
-        expect(actual1).to.equal(expected);
-        expect(actual2).to.equal(expected);
+        expect(actual).to.be.a('string');
+        expect(actual).to.equal(expected);
     });
 
     it("should maintain spaces of original input", () => {

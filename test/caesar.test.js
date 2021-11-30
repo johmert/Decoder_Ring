@@ -9,40 +9,36 @@ describe("caesar", () => {
         const actual = caesar(input, 0);
         const expected = false;
         expect(actual).to.be.a('boolean');
-        expect(actual).to.equal(expected);
+        expect(actual).to.eql(expected);
     });
     it("should return false if shift value is less than -25", () => {
         const input = "test input";
         const actual = caesar(input, -30);
         const expected = false;
         expect(actual).to.be.a('boolean');
-        expect(actual).to.equal(expected);
+        expect(actual).to.eql(expected);
     });
     it("should return false if shift value is greater than 25", () => {
         const input = "test input";
         const actual = caesar(input, 30);
         const expected = false;
         expect(actual).to.be.a('boolean');
-        expect(actual).to.equal(expected);
+        expect(actual).to.eql(expected);
     });
     it("should return false if shift value is not present", () => {
         const input = "test input";
         const actual = caesar(input);
         const expected = false;
         expect(actual).to.be.a('boolean');
-        expect(actual).to.equal(expected);
+        expect(actual).to.eql(expected);
     });
 
-    it("should ignore capital letters (results of 'A Message' should equal results of 'a message')", () => {
-        const input1 = "test input";
-        const input2 = "Test Input"
-        const actual1 = caesar(input1, 5);
-        const actual2 = caesar(input2, 5);
-        const expected = "yjxy nzuzy"
-        expect(actual1).to.be.a('string');
-        expect(actual2).to.be.a('string');
-        expect(actual1).to.equal(expected);
-        expect(actual2).to.equal(expected);
+    it("should ignore capital letters", () => {
+        const input = "Test Input"
+        const actual = caesar(input, 5);
+        const expected = "yjxy nsuzy"
+        expect(actual).to.be.a('string');
+        expect(actual).to.eql(expected);
     });
 
     it("should handle shifts that go past the end of the alphabet (z -> a)", () => {
@@ -56,7 +52,7 @@ describe("caesar", () => {
     it("should maintain spaces and other non-alphabetic symbols in the message before and after encoding", () => {
         const input = "test input!"
         const actual = caesar(input, 5);
-        const expected = "yjxy nzuzy!";
+        const expected = "yjxy nsuzy!";
         expect(actual).to.be.a('string');
         expect(actual).to.equal(expected);
     });

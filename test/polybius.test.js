@@ -20,16 +20,12 @@ describe("polybius", () => {
         expect(actual).to.equal(expected);
     });
 
-    it("should ignore capital letters (results of 'A Message' should equal results of 'a message')", () => {
-        const input1 = "test input";
-        const input2 = "Test Input";
-        const actual1 = polybius(input1);
-        const actual2 = polybius(input2);
+    it("should ignore capital letters", () => {
+        const input = "Test Input";
+        const actual = polybius(input);
         const expected = "44513444 4233535444";
-        expect(actual1).to.be.a('string');
-        expect(actual2).to.be.a('string');
-        expect(actual1).to.equal(expected);
-        expect(actual2).to.equal(expected);
+        expect(actual).to.be.a('string');
+        expect(actual).to.equal(expected);
     });
 
     it("should maintain spaces before and after encoding and decoding", () => {
