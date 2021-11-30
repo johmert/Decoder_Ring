@@ -13,23 +13,26 @@ const polybiusModule = (function () {
   ]
   function polybius(input, encode = true) {
     const message = input.toLowerCase();
-    let characters = message.split('');
-    if(encode){
+    const characters = message.split('');
+    let convertedMessage = [];
+    if(!encode){
+      let temp = characters.filter(letter => letter !== ' ');
+      if(temp.length % 2 !== 0) return false; 
+
+
+      
+    } else {
       for(let i=0; i<characters.length; i++){
         let number = ' ';
         for(let j=0; j<square.length; j++){
-          let temp = square[j].find(letter => characters[i] === letter);
-          if(temp) number = (square[j].indexOf(temp)+1).toString() + (j+1).toString();
+          let index = square[j].find(letter => characters[i] === letter);
+          if(index) number = (square[j].indexOf(index)+1).toString() + (j+1).toString();
         }
         if(characters[i] === 'i' || characters[i] === 'j') number = 42;
-        characters[i] = number;
-      }
-    } else {
-      for(let k=0; k<characters.length-1; k+=2){
-        
+        convertedMessage.push(number);
       }
     }
-    const result = characters.join('');
+    const result = convertedMessage.join('');
     return result;
   }
 
