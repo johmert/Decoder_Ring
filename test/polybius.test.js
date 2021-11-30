@@ -14,7 +14,7 @@ describe("polybius", () => {
 
     it("should translate 42 to (i/j) when decoding", () => {
         const input = "42513434423111";
-        const actual = polybius(input);
+        const actual = polybius(input, false);
         const expected = "(i/j)ess(i/j)ca";
         expect(actual).to.be.a('string');
         expect(actual).to.equal(expected);
@@ -28,10 +28,18 @@ describe("polybius", () => {
         expect(actual).to.equal(expected);
     });
 
-    it("should maintain spaces before and after encoding and decoding", () => {
+    it("should maintain spaces before and after encoding", () => {
         const input = "test input";
         const actual = polybius(input);
         const expected = "44513444 4233535444";
+        expect(actual).to.be.a('string');
+        expect(actual).to.equal(expected);
+    });
+
+    it("should maintain spaces before and after decoding", () => {
+        const input = "44513444 4233535444";
+        const actual = polybius(input, false);
+        const expected = "test (i/j)nput";
         expect(actual).to.be.a('string');
         expect(actual).to.equal(expected);
     });
