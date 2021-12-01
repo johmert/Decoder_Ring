@@ -63,7 +63,6 @@ const polybiusModule = (function () {
       convertedMessage = convertToNumber(characters);
     }
     const result = convertedMessage.join('');
-    console.log(result);
     return result;
   }
 
