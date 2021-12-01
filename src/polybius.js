@@ -38,13 +38,17 @@ const polybiusModule = (function () {
   }
 
   function findSpaces(message){
-    let spaceIndexArray = [];
-    for(let i=0; i<message.length;i++){
-      if(message[i] === ' '){
-        spaceIndexArray.push(i/2);
+    const spaceIndexArray = [];
+    let index = message.indexOf(' ');
+    if(index < 0) return spaceIndexArray;
+    for(let i=message.length-1; i>=0; i--){
+      let space = message.lastIndexOf(' ', i);
+      if(space >= 0){
+        if(spaceIndexArray.includes(Math.ceil(space/2)) === false) spaceIndexArray.push(Math.ceil(space/2));        
       }
     }
-    return spaceIndexArray;
+        
+    return spaceIndexArray.reverse();
   }
 
   function polybius(input, encode = true) {
@@ -56,9 +60,9 @@ const polybiusModule = (function () {
       if(temp.length % 2 !== 0) return false;
       let spaceIndexArray = findSpaces(characters);
       convertedMessage = convertToLetter(temp);
-      spaceIndexArray.forEach(index => {
-        convertedMessage.splice(index, 0, ' ');
-      })
+      for(let i=0; i<spaceIndexArray.length;i++){
+        convertedMessage.splice(spaceIndexArray[i]+Math.floor(i/2), 0, ' ');
+      }
     } else {
       convertedMessage = convertToNumber(characters);
     }

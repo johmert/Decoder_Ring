@@ -37,9 +37,9 @@ describe("polybius", () => {
     });
 
     it("should maintain spaces before and after decoding", () => {
-        const input = "44513444 4233535444";
+        const input = "44513444 4233535444 4432245151 345311315134";
         const actual = polybius(input, false);
-        const expected = "test (i/j)nput";
+        const expected = "test (i/j)nput three spaces";
         expect(actual).to.be.a('string');
         expect(actual).to.equal(expected);
     });
