@@ -5,9 +5,24 @@
 
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
+  const standardAlphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+  function checkAlphabet(alphabet){
+    if(alphabet.length !== 25) return false;
+    for(let i=0; i<alphabet.length; i++){
+      for(let j=1; j<alphabet.length; j++){
+        if(alphabet[i] === alphabet[j]){
+          return false;
+        }
+      }      
+    }
+    return true;
+  }
 
   function substitution(input, alphabet, encode = true) {
-    // your solution code here
+    if(!checkAlphabet(alphabet)) return false;
+    let message = input.toLowerCase();
+    
   }
 
   return {
